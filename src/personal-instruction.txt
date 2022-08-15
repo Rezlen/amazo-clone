@@ -1,0 +1,94 @@
+1- npx create-react-app amazon-clone
+2- remove unnecessary logo & style from app.js and remove test file, logo file.
+3- create Header.js & its css
+4 -remove margin from index.css
+5- Create & connect your FireBase FREE storage/server compiler
+6- import the following: import './Header.css'
+
+7- Instal the ICONS from: https://mui.com/material-ui/icons/#icon-font-icons   by: npm install @mui/icons-material
+8- import the following on your app.js:  import SearchIcon from '@mui/icons-material/Search'; (For importing ICONS)
+ *rfce fro auto import***
+9- to have other pages connected do NOt forget to import Router as well as adding <Router></Router> tags to the APP function in the app.js:
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+10- add the pages inside the <switch></switch> tags. Inside of the add the <Route path= '/'><Route>. This default route must always be at the bottom otherwise will never be read.
+
+import CurrencyFormat from 'react-currency-format';     [Did not work for:] Instal 'npm i react-currency-format' in your Subtotal.js. the used: 
+so I used two commands: 
+ npm install --save --legacy-peer-deps Then: npm install react-currency-format --save --force
+
+ redux section 2:00:44
+
+ In react 18.2.0 Different React-DOM  function style must be imported in INDEX.JS, APP.JS,  
+
+--------------------
+ Solution to the issue when removes the item in the basket from the top and not the item you click on:
+https://www.youtube.com/watch?v=RDV3Z1KCBvo comment on the jyotika sethi 5 months ago
+
+You need to modify this line in checkout.js to include the index value and key value. (if you do not include the key value you'll just get an error)
+checkout.js ////
+{basket.map((item, index) => (
+                            <CheckoutProduct
+                                key={index}
+                                basketIndex={index}
+                                id={item.id}
+                                title={item.title}
+                                price={item.price}
+                                image={item.image}
+                            />
+                        ))}
+
+
+Then in ProductCheckout.js add the basketIndex value and use it in the dispatch function
+ProductCheckout.js  ////
+function CheckoutProduct({ basketIndex, id, title, price, image }) {
+    const [, dispatch] = useStateValue();
+
+    const removeFromBasket = () => {
+        dispatch({
+            type: 'REMOVE_FROM_BASKET',
+            basketIndex: basketIndex,
+        })
+    }
+
+Finally in the reducer.js file add the 'REMOVE_FROM_BASKET' event which should look like this
+reducer.js ////
+case 'REMOVE_FROM_BASKET':
+            let newBasket = [...state.basket];
+
+            newBasket.splice(action.basketIndex, 1);
+
+            return {
+                ...state,
+                basket: newBasket
+            };
+
+Hope this helps :)
+
+---------------
+
+          <h3>Hello, {user?.email}</h3> {/*the ? called (optional chaining) that is there; is to prevent the server sync delay which can happen during loading/connecting*/}
+
+============Configure and deploy Firebase Hosting sites==============
+$ npm install -g firebase-tools
+https://www.youtube.com/watch?v=RDV3Z1KCBvo insructio video from minutes: 4:37
+
+firebase login
+firebase init >
+Hosting: Configure and deploy Firebase Hosting sites >
+Please sellect an option > use an existing project > (Choose the project you have created in Firebase)
+What do you want to use as your public directory? (public) build
+Configure as a single-page app (rewrite all urls to /index.html)? (y/N) y
+Set up automatic builds and deploys with GitHub? (y/N) n
+THEN: npm run build
+Lastly: firebase deploy
+Project Console: https://console.firebase.google.com/project/amazo-clone1/overview
+Hosting URL: https://amazo-clone1.web.app
+
+=============STRIPE====================
+
+For the payment page ad STRIPE payment tools/code.
+npm i @stripe/stripe-js OR npm i @stripe/stripe-js --force
+Then 
+npm i @stripe/react-stripe-js OR npm i @stripe/react-stripe-js --force
+

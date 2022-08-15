@@ -1,0 +1,83 @@
+html,
+body {
+  font-size: 16px;
+}
+
+/*adjust the header bar height*/
+.header {
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__logo {
+  width: 4rem;
+  object-fit: contain;
+  margin: 0 1rem;
+  margin-top: 0.5rem;
+}
+
+/*align the search box with others*/
+.header__search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 1.5rem;
+}
+
+.header__searchInput {
+  height: 1rem;
+  padding: 0.2rem;
+  border: none;
+  width: 100%;
+  border-radius: 0.15rem;
+}
+
+.header__searchIcon {
+  padding: 0.2rem;
+  height: 1rem !important;
+  background-color: #cd9042;
+  border-radius: 0.15rem
+}
+
+/*Styling the TWO line in th header*/
+.header__optionLineOne {
+  font-size: 0.6rem;
+}
+/*Styling the TWO line in th header*/
+.header__optionLineTwo {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/*Styling the BASKET in th header*/
+.header__optionBasket {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+/*Styling the COUNTER in th header*/
+.header__basketCount {
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*Styling items inside the header nav*/
+.header__option {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  color: white;
+}
+
