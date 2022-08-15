@@ -92,3 +92,22 @@ npm i @stripe/stripe-js OR npm i @stripe/stripe-js --force
 Then 
 npm i @stripe/react-stripe-js OR npm i @stripe/react-stripe-js --force
 
+===============
+
+===============axios.js===============
+after creating its faile: axios.js run this command: npm i axios
+AXIOS is way of writing REQUESTS. It is a great FETCHING library
+=========== after completing the Payment.js, you run the: firebase init
+Are you ready to proceed? Yes
+Functions: Configure a Cloud Functions directory and its files
+? What language would you like to use to write Cloud Functions? JavaScript
+? Do you want to use ESLint to catch probable bugs and enforce style? y
++  Wrote functions/package.json
++  Wrote functions/.eslintrc.js
++  Wrote functions/index.js
++  Wrote functions/.gitignore
+? Do you want to install dependencies with npm now? y
+
+====================
+Functions folder is the full backend.
+
