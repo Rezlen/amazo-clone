@@ -37,6 +37,7 @@ function Payment() {
     getClientSecret();
 }, [basket])
 
+// below to test after going to the checkout; you see the secret api in the INSPECT
 console.log('THE SECRET IS >>>', clientSecret)
 console.log('👱', user)
 
@@ -52,16 +53,17 @@ console.log('👱', user)
     }).then(({ paymentIntent }) => {
     // paymentIntent = payment confirmation from Stripe.
 
+    // db collection users. Below communicate with the firestore database (called CLOUD FIRESTORE) & put data in firestore datbase: https://console.firebase.google.com/u/0/project/amazo-clone1/firestore/data/~2F
       db
-      .collection('users')
-      .doc(user?.uid)
-      .collection('orders')
-      .doc(paymentIntent.id)
-      .set({
-        basket: basket,
-        amount: paymentIntent.amount,
-        created: paymentIntent.created
-      })
+        .collection('users')
+        .doc(user?.uid)
+        .collection('orders')
+        .doc(paymentIntent.id)
+        .set({
+          basket: basket,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created
+        })
 
       setSucceeded(true);
       setError(null)
@@ -70,8 +72,8 @@ console.log('👱', user)
       dispatch({
         type: 'EMPTY_BASKET'
       })
-      // so that after payment the cutomer does not come back too the payment page, they got to the ORDER page.
-      navigate.replace('/orders')
+      // so that after payment the customer does not come back too the payment page, they got to the ORDER page.
+      navigate('/orders')
     })
 
   }
@@ -112,14 +114,16 @@ console.log('👱', user)
             <h3>Review items and delivery</h3>
           </div>
           <div className='payment__items'>
-            {basket.map(item => (
-              /* This way you RE-USE the the already deigned/css products */
+            {basket.map((item, index)=> (
+              /* This way you RE-USE the the already deigned/css products */ //for react-dom v6 or later INDEX needed
               <CheckoutProduct
                 id={item.id}
                 title={item.title}
                 image={item.image}
                 price={item.price}
                 rating={item.rating}
+                key={index} // for react-dom v6 or later needed.
+                basketIndex={index} // for react-dom v6 or later needed
               />
             ))}
           </div>

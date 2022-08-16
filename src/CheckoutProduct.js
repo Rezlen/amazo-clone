@@ -4,7 +4,7 @@ import { useStateValue } from './StateProvider';
 
 
 // This page display the FULL details of the item which has been added to the basket
-function CheckoutProduct({basketIndex, id, title, image, price, rating}) {
+function CheckoutProduct({basketIndex, id, title, image, price, rating, hideButton}) {
 {/*const [{basket}, dispatch] = useStateValue();*/}
   const [{basket}, dispatch] = useStateValue();
 
@@ -14,6 +14,8 @@ function CheckoutProduct({basketIndex, id, title, image, price, rating}) {
       type: 'REMOVE_FROM_BASKET',
       id: id,
       basketIndex: basketIndex
+      /*basket index is needed in react V6 */
+
     })
   }
 
@@ -29,7 +31,10 @@ function CheckoutProduct({basketIndex, id, title, image, price, rating}) {
         <div className='checkoutProduct__rating' >
           {Array(rating).fill().map((_, i) => (<p>🌟</p>))}
         </div>
-        <button onClick={removeFromBasket}>Remove from Basket</button>
+        {/*Hide the button when the order is placed */}
+        {!hideButton && (
+          <button onClick={removeFromBasket}>Remove from Basket</button>
+        )}
       </div>
     </div>
   )

@@ -3,7 +3,7 @@
 // Instruction to use FireBase;  Choose/Create your project on FireBase > Project Setting > FireBase SDK snippet > Config then copy the snippet & paste it here:
 // Link: https://console.firebase.google.com/u/0/project/amazo-clone1/settings/general/web:MTg4NWYyMTAtNjY3MS00YmU4LWExODItNWQzZDYwMTgxNTM3
 
-// Go to the AUTHENTICATION > Sign-In-Method then ENABLE Email/Password
+// Go to the AUTHENTICATION > Sign-In-Method > then  ENABLE Email/Password
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';

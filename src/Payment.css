@@ -42,7 +42,7 @@ body {
   padding-bottom: 1.25rem;
 }
 
-
+/*BUY NOW button at checkout page*/
 .payment__details > form > div > button {
   background: #f0c14b;
   border-radius: 0.07rem;
@@ -53,4 +53,12 @@ body {
   margin-top: 0.6rem;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
+}
+
+.payment__details > form > div > button:hover { 
+  background-color:rgb(175, 142, 52);
+}
+
+.payment__details > form > div > button:active {
+  border: 0.15rem solid rgb(0, 0, 0);
 }

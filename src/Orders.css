@@ -1,0 +1,12 @@
+html,
+body {
+  font-size: 16px;
+}
+
+.orders {
+  padding: 1.25rem 5rem;
+}
+
+.orders > h1 {
+  margin: 1.8rem 0;
+}

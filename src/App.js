@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Checkout from './Checkout';
 import Login from './Login';
 import Payment from './Payment';
-//import Orders from "./Orders";
+import Orders from "./Orders";
 import { auth } from './firebase';
 import { useStateValue } from "./StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
@@ -50,7 +50,7 @@ function App() {
       <div className='app'>
       <Routes>
          <Route path='/login' element={<Login />} />
-         
+         <Route path='/orders' element={[<Header />, <Orders />]} />
          <Route path='/checkout' element={[<Header />, <Checkout />]} />
          <Route path='/payment' element={[<Header />, <Elements stripe={stripePromise} > <Payment/> </Elements>]} /> {/*whole component PAYMENT you're showing here should be wrapped by Elements, not some part of. <Elements stripe={stripePromise} > <Payment/> </Elements> */}
          <Route path='/' element={[<Header />, <Home/>]} />
