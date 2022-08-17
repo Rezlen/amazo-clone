@@ -107,7 +107,76 @@ Functions: Configure a Cloud Functions directory and its files
 +  Wrote functions/index.js
 +  Wrote functions/.gitignore
 ? Do you want to install dependencies with npm now? y
+===============
+Functions folder is the full backend. and has its own Node Modules, Json etc. At this point if you do npm INSTALL, it must be in the FUNCTIONS folder, otherwise it messes up things.
+There we create an EXPRESS app & host it on a cloud function, escalable & full backend.
+==========npm i express===========
+While in the functions folder, run NPM I EXPRESS command
+==========npm i cors==============
+==========npm i stripe==============
+Navigate in directories: 
+To navigate into the root directory, use "cd /" 
+To navigate to your home directory, use "cd" or "cd ~" 
+To navigate BACK one directory level, use "cd .." 
+To navigate to the previous directory (or back), use "cd folder name"
+=========API Creation=========
+1- App Config 2- Middleware 3-API routes  4- Listen command
+========test the firebase & API test on local========
+firebase emulators:start
+THEN you find the API end point here: +  functions[us-central1-api]: http function initialized (http://localhost:5001/amazo-clone1/us-central1/api).
+And all the logs here: http://localhost:4000/logs?q=metadata.emulator.name%3D%22functions%22
 
-====================
-Functions folder is the full backend.
+I had to enter"firebase emulators:start" (Restarting the backend) again next morning to start an engine, that goes to order peage after clicking on BUY NOW after going to checkout (Payment page); http://localhost:3000/payment
+To check the payment has gone trhough, check the HOME at: https://dashboard.stripe.com/test/dashboard
+===========
+For database, go to Firebase https://console.firebase.google.com/u/0/project/amazo-clone1/firestore > Firebase Database > Start in Test Mode > 
+======npm install moment=====
+A great library to pass data/time stamps
+in "order page" you must install MOMENT tools
+
+=======Re-deploying functions== ===firebase deploy --only functions====
+firebase deploy --only functions  >For adding new functions to your already running functions, you must be in functions folder terminal.
+If this fails, you need to go to your firebase > at botom > Spark (Plan) > change to Blaze
+
+You might fac error which can be because of the SPACES you place when naming your folder. Go to you firebase.jason file and do either of the followings:
+https://stackoverflow.com/questions/48429390/firebase-deploy-errors-starting-with-non-zero-exit-code-space-in-project-path
+
+What happens actually is that in Windows, firebase.json contains the following by default:
+
+"predeploy": [
+  "npm --prefix \"$RESOURCE_DIR\" run lint"
+]
+Modify it to:
+
+"predeploy": [
+  "npm --prefix \"%RESOURCE_DIR%\" run lint"
+]
+
+ORRRRRRRRR just remove:
+"predeploy": [
+  "npm --prefix \"$RESOURCE_DIR\" run lint"
+]
+
+that is hat I did.
+Outcome of re-deploy can be seen at: https://console.firebase.google.com/project/amazo-clone1/overview then> Functions tab of the left > copy the Request link and past it in axios.js file
+==========Deployings==========
+Re-deploying functions: firebase deploy --only functions
+Then redeploy (backend infact): npm run build
+then re-deploy the hosting/front-end: firebase deploy --only hosting
+==============Sometimes Error===============
+If you stucked in RE-WRITE/Re-Deploy, you can remove the piece in firebase.jason
+
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+
+================
+
+
+
+
+
 
