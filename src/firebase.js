@@ -4,7 +4,7 @@
 // Link: https://console.firebase.google.com/u/0/project/amazo-clone1/settings/general/web:MTg4NWYyMTAtNjY3MS00YmU4LWExODItNWQzZDYwMTgxNTM3
 
 // Go to the AUTHENTICATION > Sign-In-Method > then  ENABLE Email/Password
-import firebase from 'firebase/compat/app';
+import firebase from 'firebase/compat/app';  // that is import style for react v8; instead of import firebase from 'firebase'; 
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
@@ -20,9 +20,9 @@ const firebaseConfig = {
 };
 
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig); //Connect to the firebase server
 
-const db = firebaseApp.firestore();
-const auth = firebase.auth();
+const db = firebaseApp.firestore();// connect ot the firebase database
+const auth = firebase.auth();// connect to the firebase authentication
 
 export { db, auth };

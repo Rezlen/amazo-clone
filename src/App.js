@@ -48,12 +48,12 @@ function App() {
     <Router>
       {/*BEM*/}
       <div className='app'>
-      <Routes>
-         <Route path='/login' element={<Login />} />
-         <Route path='/orders' element={[<Header />, <Orders />]} />
-         <Route path='/checkout' element={[<Header />, <Checkout />]} />
-         <Route path='/payment' element={[<Header />, <Elements stripe={stripePromise} > <Payment/> </Elements>]} /> {/*whole component PAYMENT you're showing here should be wrapped by Elements, not some part of. <Elements stripe={stripePromise} > <Payment/> </Elements> */}
-         <Route path='/' element={[<Header />, <Home/>]} />
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/orders' element={[<Header />, <Orders />]} />
+          <Route path='/checkout' element={[<Header />, <Checkout />]} />
+          <Route path='/payment' element={[<Header />, <Elements stripe={stripePromise} > <Payment/> </Elements>]} /> {/*whole component PAYMENT you're showing here should be wrapped by Elements, not some part of. <Elements stripe={stripePromise} > <Payment/> </Elements> */}
+          <Route path='/' element={[<Header />, <Home/>]} />
         </Routes>
       </div>
     </Router>
